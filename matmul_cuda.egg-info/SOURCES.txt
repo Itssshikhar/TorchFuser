@@ -1,6 +1,0 @@
-setup.py
-matmul_cuda.egg-info/PKG-INFO
-matmul_cuda.egg-info/SOURCES.txt
-matmul_cuda.egg-info/dependency_links.txt
-matmul_cuda.egg-info/top_level.txt
-opt_runs_pytorch/inefficient_matmul_loop_cuda_implementation_1_cleaned.cu
