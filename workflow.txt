@@ -1,0 +1,24 @@
+Proposed Workflow
+Profile: Capture traces using PyTorch Profiler/Nsight during training/inference.
+
+Analyze: Auto-classify bottlenecks (e.g., "DataLoader delay causing 40% GPU idle time").
+
+Optimize: Recommend framework-specific fixes (e.g., torch.compile for kernel fusion).
+
+Monitor: Deploy continuous profiling in production with Polar Signals-like dashboards.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Phase 1: MVP (Minimum Viable Product) – Focus: Core data collection and basic visualization for NVIDIA GPUs.
+
+- Basic GPU Metrics Collection: Implement the node-level GPU metrics agent using NVIDIA’s DCGM or NVML. Target metrics: GPU utilization %, memory usage %, power draw (Watts) – as these are the key indicators of performance and efficiency. Ensure this runs as a DaemonSet in Kubernetes and/or a systemd service on a single node. Validate that metrics are accurate against nvidia-smi. Expose metrics via a Prometheus endpoint.
+
+- Basic CPU Profiler: Incorporate an eBPF-based CPU sampler (perhaps using an existing project like Parca-agent or Pyroscope as a library to speed up development). This collects CPU stack samples at, say, 99Hz. Store these in memory or local disk for now.
+
+- Simple Backend & Storage: Set up a minimal backend that can receive metrics (or just rely on Prometheus for scraping in MVP). For profiles, the MVP could simply write pprof files periodically and expose them for download.
+
+- Minimal UI (Prototype): Use Grafana for metrics visualization. Provide a basic dashboard showing GPU utilization over time for each GPU. For CPU profiles, MVP could skip a UI and instead allow downloading flame graphs or viewing them with existing tools. However, to demonstrate value, we might integrate a simple web page that displays a flame graph image for the last profiling interval.
+
+- Correlation logic (manual in MVP): Document a procedure to correlate CPU and GPU (e.g., instruct the user to look at timestamps in Grafana and then open the corresponding profile). Automatic correlation can be rudimentary – maybe print log messages if GPU was low utilization while CPU was high at a certain time.
+
+Outcome: A working prototype that can profile an example GPU application and confirm the concept (e.g., run a GPU application with an artificial CPU delay and see that our tool identifies GPU idle time and CPU busy loop). This MVP will be internal or with a friendly pilot user, focusing on correctness and basic utility.
