@@ -1,0 +1,2 @@
+I'll explain you how @pytorch_optimizer_cli works and after you've understood help me benchmark it against CUDA.
+So: @sample_torch_script.py is basic pytorch-code. In @optimizer_cli.py there is an agent that used `Torch.profiler` to profile the code in @sample_torch_script.py and then send those to an LLM line in this case gemini-2.0-flash. Then it returns with a very fast CUDA code for it. Now, I want to benchmark those pytorch code against CUDA code against `torch.compile`. 

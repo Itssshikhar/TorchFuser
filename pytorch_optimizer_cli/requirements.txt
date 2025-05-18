@@ -1,0 +1,7 @@
+torch
+torchvision
+torchaudio
+openai
+google-generativeai
+python-dotenv
+# Add specific versions if needed, e.g., torch>=2.0.0 
