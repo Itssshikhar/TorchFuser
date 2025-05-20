@@ -1,9 +1,6 @@
 [submodule "third-party/ThunderKittens"]
 	path = third-party/ThunderKittens
 	url = git@github.com:HazyResearch/ThunderKittens.git
-[submodule "third-party/nanoGPT"]
-	path = third-party/nanoGPT
-	url = git@github.com:karpathy/nanoGPT.git
 [submodule "third-party/llm.c"]
 	path = third-party/llm.c
 	url = git@github.com:karpathy/llm.c.git
