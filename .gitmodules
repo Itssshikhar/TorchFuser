@@ -4,3 +4,6 @@
 [submodule "third-party/llm.c"]
 	path = third-party/llm.c
 	url = git@github.com:karpathy/llm.c.git
+[submodule "nanoGPT"]
+	path = nanoGPT
+	url = https://github.com/Itssshikhar/nanoGPT.git
